@@ -1,0 +1,25 @@
+.env
+credentials.json
+token.json
+.claude/
+.tmp/
+__pycache__/
+*.pyc
+.DS_Store
+val/.vt/
+
+# private: kept in the archived ripurl-newsletter repo, not published
+archive/
+assets/
+drafts/
+tools/
+templates/
+portfolio/*
+!portfolio/issue-01-bomis.png
+*.pdf
+Create*.png
+ripurl_issue01_imeem.*
+PROJECT_SPEC.md
+GROWTH_PLAN.md
+project story.md
+requirements.txt
