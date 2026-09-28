@@ -3,7 +3,7 @@
 // never emails — so it can't collide with the live cron. The rendered web
 // page lands in blob "preview:html". Delete "preview:job" to start over.
 // Costs real API money at the generate/verify stages.
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import type { Candidate, Evidence, Obituary } from "../lib/types.ts";
 import { buildPool, vetBatch } from "../lib/discover.ts";
 import { gatherEvidence } from "../lib/evidence.ts";

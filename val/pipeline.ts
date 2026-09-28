@@ -11,7 +11,7 @@
 // you get a plain-text email saying which stage broke, never silence, never a
 // partial issue.
 
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import type { Job } from "./lib/types.ts";
 import {
   activeJob,
@@ -183,7 +183,7 @@ async function alertFailed(job: Job) {
   await sendOwnerCopy(
     "RIP·URL: this week's run FAILED",
     `<pre style="font-family:monospace;">The pipeline gave up.\n\nLast error: ${job.error}\n\n` +
-      `Nothing was published. Check the val logs, fix the stage, then POST /run?token=... to retry.</pre>`,
+      `Nothing was published. Check the val logs, fix the stage, then POST /run with the admin token header to retry.</pre>`,
   );
 }
 

@@ -1,8 +1,8 @@
 // Correct a published issue the way the pipeline would have: fact-check it,
 // make a surgical revision for any findings, re-check, and re-render the web
 // page only if the revision passes. Set ISSUE below. Costs 2–6 model calls.
-import { blob } from "https://esm.town/v/std/blob/main.ts";
-import { sqlite } from "https://esm.town/v/std/sqlite/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
+import { sqlite } from "https://esm.town/v/std/sqlite@34-main/main.ts";
 import { assembleIssue } from "../lib/assemble.ts";
 import { factCheck, writeObituary } from "../lib/generate.ts";
 import { getIssue } from "../lib/state.ts";

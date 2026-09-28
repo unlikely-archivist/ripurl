@@ -72,7 +72,7 @@ fact-check, whose first run on a real draft found seven unsupported claims.
 | Path | What |
 |---|---|
 | `val/` | The production pipeline and website (mirror of the Val Town val; `cd val && vt pull` to sync) |
-| `tests/` | Offline tests: the corpse gate against faked site responses, the name gate, scoring |
+| `tests/` | Offline tests: the corpse gate against faked site responses, the name gate, scoring, admin auth. Run on every push by `.github/workflows/test.yml` |
 | `val/scripts/` | Regression check for the liveness gate, dry-run preview, audit and revision tools |
 | `AUTOMATION.md` | Architecture and design decisions |
 
@@ -85,4 +85,4 @@ The val runs on Val Town's free tier. To run your own copy, remix the val and se
   every website response faked (no network, no keys)
 - `scripts/check_liveness.ts` — verify the corpse gate against known live and dead domains (live network)
 - `scripts/preview_issue.ts` — dry-run a full issue (run repeatedly; one stage per run)
-- `POST /run?token=…` — start a real issue outside the Sunday window
+- `POST /run` with `Authorization: Bearer $RUN_TOKEN` — start a real issue outside the Sunday window

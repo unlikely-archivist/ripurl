@@ -22,8 +22,8 @@
 // thinking, because a missed claim costs more than a slower check.
 // RIPURL_MODEL overrides the model for both calls.
 
-import Anthropic from "npm:@anthropic-ai/sdk";
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import Anthropic from "npm:@anthropic-ai/sdk@0.128.0";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import type { Evidence, Obituary } from "./types.ts";
 
 const OBITUARY_SCHEMA = {

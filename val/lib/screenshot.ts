@@ -11,7 +11,7 @@
 // We fetch the JPEG bytes and store them in blob storage, so the published
 // issue never depends on a third-party image URL staying alive.
 
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import jpeg from "npm:jpeg-js@0.4.4";
 
 // Old sites often render as a small fixed layout in one corner of the

@@ -1,7 +1,7 @@
 // Re-render every published issue's web page with the current template, from
 // its stored obituary + evidence, keeping each issue's original date. Free
 // (no model calls) and idempotent. Emails already sent are not touched.
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import { assembleIssue } from "../lib/assemble.ts";
 import { getIssue, listIssues } from "../lib/state.ts";
 import type { Obituary } from "../lib/types.ts";

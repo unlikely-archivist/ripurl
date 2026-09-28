@@ -9,11 +9,12 @@
 //   GET  /confirm?t=         activate a subscription
 //   GET|POST /unsubscribe?t= GET asks, POST does it (also RFC 8058 one-click)
 //   GET  /preview?k=         draft from scripts/preview_issue.ts (per-preview key)
-//   GET  /status             current job state (public, read-only, no secrets)
-//   POST /run?token=...      force-start this week's job now (RUN_TOKEN guards it)
-//   POST /tick?token=...     advance the active job one stage now (same guard)
+//   GET  /status             public: stage only; with the admin token: candidate and error too
+//   POST /run                force-start this week's job now (admin token required)
+//   POST /tick               advance the active job one stage now (admin token required)
+// Admin token: "Authorization: Bearer <RUN_TOKEN>". Never in the URL, which can end up in logs.
 
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import {
   activeJob,
   getIssue,
@@ -33,9 +34,9 @@ const HTML = { "content-type": "text/html; charset=utf-8" };
 const EMAIL = /^[^\s@<>"]+@[^\s@<>"]+\.[a-z]{2,}$/i;
 const RESEND_AFTER_MS = 10 * 60_000;
 
-function authorized(url: URL): boolean {
+export function authorized(req: Request): boolean {
   const token = Deno.env.get("RUN_TOKEN");
-  return Boolean(token) && url.searchParams.get("token") === token;
+  return Boolean(token) && req.headers.get("authorization") === `Bearer ${token}`;
 }
 
 async function obituaryOf(n: number): Promise<Obituary | undefined> {
@@ -187,6 +188,8 @@ export default async function (req: Request): Promise<Response> {
 
   if (path === "/status" && req.method === "GET") {
     const job = await activeJob();
+    // Public view says only whether a job is running; next week's subject and internal errors stay private.
+    if (job && !authorized(req)) return Response.json({ stage: job.stage, updatedAt: job.updatedAt });
     return Response.json(
       job
         ? {
@@ -203,12 +206,12 @@ export default async function (req: Request): Promise<Response> {
   }
 
   if (path === "/run" && req.method === "POST") {
-    if (!authorized(url)) return new Response("Forbidden", { status: 403 });
+    if (!authorized(req)) return new Response("Forbidden", { status: 403 });
     return new Response(await tick(true));
   }
 
   if (path === "/tick" && req.method === "POST") {
-    if (!authorized(url)) return new Response("Forbidden", { status: 403 });
+    if (!authorized(req)) return new Response("Forbidden", { status: 403 });
     return new Response(await tick());
   }
 

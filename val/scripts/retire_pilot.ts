@@ -3,8 +3,8 @@
 // issue rows move to the pilot_issues table and each page is copied to blob
 // "pilot:issue:<n>:html" before the live row is cleared. used_domains is left
 // alone, so pilot domains are not re-picked.
-import { blob } from "https://esm.town/v/std/blob/main.ts";
-import { sqlite } from "https://esm.town/v/std/sqlite/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
+import { sqlite } from "https://esm.town/v/std/sqlite@34-main/main.ts";
 import { initTables, listIssues } from "../lib/state.ts";
 
 await initTables();

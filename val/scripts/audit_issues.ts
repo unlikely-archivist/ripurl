@@ -1,6 +1,6 @@
 // Re-run the current fact-checker over every published issue and print its
 // findings. Read-only; costs one model call per issue.
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import { factCheck } from "../lib/generate.ts";
 import { getIssue, listIssues } from "../lib/state.ts";
 import type { Obituary } from "../lib/types.ts";

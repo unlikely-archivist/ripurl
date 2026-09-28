@@ -1,7 +1,7 @@
 // Persistence: sqlite (val-scoped) for jobs, issues, subscribers, and the
 // used-domain exclusion list. Blob storage holds the big artifacts
 // (screenshot JPEG, final HTML) keyed by issue number / domain.
-import { sqlite } from "https://esm.town/v/std/sqlite/main.ts";
+import { sqlite } from "https://esm.town/v/std/sqlite@34-main/main.ts";
 import type { Job, Stage } from "./types.ts";
 
 export async function initTables() {

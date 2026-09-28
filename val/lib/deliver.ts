@@ -10,8 +10,8 @@
 // Subscriber sends are idempotent per (issue, email) via the deliveries
 // table, so a run cut off mid-list resumes next tick without double-sending.
 
-import { email as stdEmail } from "https://esm.town/v/std/email";
-import { sqlite } from "https://esm.town/v/std/sqlite/main.ts";
+import { email as stdEmail } from "https://esm.town/v/std/email?v=13";
+import { sqlite } from "https://esm.town/v/std/sqlite@34-main/main.ts";
 import { activeSubscribers } from "./state.ts";
 
 export const UNSUBSCRIBE_SENTINEL = "%%UNSUBSCRIBE_URL%%";

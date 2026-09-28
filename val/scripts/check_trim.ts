@@ -1,6 +1,6 @@
 // Manual check: run trimDeadSpace over stored screenshots without saving
 // anything, and report the crop each one would get.
-import { blob } from "https://esm.town/v/std/blob/main.ts";
+import { blob } from "https://esm.town/v/std/blob@30-main/main.ts";
 import jpeg from "npm:jpeg-js@0.4.4";
 import { trimDeadSpace } from "../lib/screenshot.ts";
 
